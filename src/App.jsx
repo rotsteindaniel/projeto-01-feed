@@ -7,6 +7,57 @@ import styles from "./App.module.css";
 import "./global.css";
 
 export function App() {
+  const posts = [
+    {
+      id: 1,
+      author: {
+        avatarUrl: "https://github.com/rotsteindaniel.png",
+        name: "Daniel Rotstein",
+        role: "Web Developer",
+      },
+      content: [
+        {
+          type: "paragraph",
+          content: "Fala galeraa 👋",
+        },
+        {
+          type: "paragraph",
+          content:
+            "Acabei de subir mais um projeto no meu portifa. É um projeto que fiz no NLW Return, evento da Rocketseat. O nome do projeto é DoctorCare 🚀",
+        },
+        {
+          type: "link",
+          content: "jane.design/doctorcare",
+        },
+      ],
+      publishedAt: new Date("2022-09-03 20:00:00"),
+    },
+    {
+      id: 2,
+      author: {
+        avatarUrl: "https://github.com/maykbrito.png",
+        name: "Mayk Brito",
+        role: "Educator",
+      },
+      content: [
+        {
+          type: "paragraph",
+          content: "Fala galeraa 👋",
+        },
+        {
+          type: "paragraph",
+          content:
+            "Acabei de subir mais um projeto no meu portifa. É um projeto que fiz no NLW Return, evento da Rocketseat. O nome do projeto é DoctorCare 🚀",
+        },
+        {
+          type: "link",
+          content: "jane.design/doctorcare",
+        },
+      ],
+      publishedAt: new Date("2022-09-10 20:00:00"),
+    },
+  ];
+
   return (
     <div>
       <Header />
@@ -14,14 +65,15 @@ export function App() {
       <div className={styles.wrapper}>
         <Sidebar />
         <main>
-          <Post
-            author="Daniel"
-            content="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled"
-          />
-          <Post
-            author="Gabriel"
-            content="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the"
-          />
+          {posts.map((post) => {
+            return (
+              <Post
+                author={post.author}
+                content={post.content}
+                publishedAt={post.publishedAt}
+              />
+            );
+          })}
         </main>
       </div>
     </div>
